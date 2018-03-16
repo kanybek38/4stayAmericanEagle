@@ -18,6 +18,13 @@ public class MainHomePage {
 	public WebElement ListYourButton;
 	
 	
+	
+	public String title() {
+	
+		String actualTitle = driver.getTitle().toString().trim();
+	    return actualTitle;
+	}
+	
 	public void listButton() {
 		
 		ListYourButton.click();
