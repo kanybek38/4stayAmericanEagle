@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import utilities.Config;
 
 public class ListYourStayPage {
-	//
+	
     WebDriver driver;
 	
 	public ListYourStayPage(WebDriver driver) {

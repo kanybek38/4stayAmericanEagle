@@ -14,7 +14,7 @@ import utilities.Config;
 
 public class CreatAccoundTest {
 	WebDriver driver;
-//
+
 	@BeforeClass
 	public void setUp() {
 		driver = Browser.getDriver();
