@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.Config;
+
 public class MainHomePage {
 
 	WebDriver driver;
@@ -17,7 +19,20 @@ public class MainHomePage {
 	@FindBy (linkText="LIST YOUR STAY")
 	public WebElement ListYourButton;
 	
+	@FindBy (xpath = "//a[@href='#login-modal']")
+	public WebElement loginButton;
 	
+	@FindBy (xpath = "//input[@id='user_email']")
+	public WebElement userEmail;
+	
+	@FindBy (xpath = "//input[@id='user_password']")
+	public WebElement userPassword;
+	
+	@FindBy (xpath = "//a[@id='login_btn']")
+	public WebElement userLoginButton; 
+	
+	@FindBy (xpath = "//li[@class='list']/a" )
+	public WebElement secondListYourStay;
 	
 	public String title() {
 	
@@ -29,7 +44,19 @@ public class MainHomePage {
 		
 		ListYourButton.click();
 	}
-
-
+  
+	public void loginBut() {
+		loginButton.click();
+	}
+    
+	public void userLogin() {
+		userEmail.sendKeys(Config.getProperty("email"));
+		userPassword.sendKeys(Config.getProperty("password"));
+		userLoginButton.click();
+	}
+	
+	public void secondListYourStay() {
+		secondListYourStay.click();
+	}
 	
 }
