@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import pages.MainHomePage;
+import pages.ListYourStayPage;
 import utilities.Browser;
 import utilities.Config;
 
@@ -38,6 +39,14 @@ public class LoginigTest {
 		// we need to go listYourStay again
 		Thread.sleep(2000);
 		m.secondListYourStay();
+	}
+	
+	@Test(priority=2)
+	public void listYourStay() throws InterruptedException {
+		ListYourStayPage stayPage=new ListYourStayPage(driver); 
+	
+		stayPage.listYourStay();
+		
 	}
 
 

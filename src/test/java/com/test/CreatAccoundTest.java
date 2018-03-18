@@ -7,7 +7,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import pages.ListYourStayPage;
+import pages.LoginPage;
 import pages.MainHomePage;
 import utilities.Browser;
 import utilities.Config;
@@ -36,19 +36,21 @@ public class CreatAccoundTest {
 		m.listButton();
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 2 )
 	public void ListPage() {
-		ListYourStayPage l = new ListYourStayPage(driver);
+		LoginPage l = new LoginPage(driver);
 
 		l.sendYourInfo();
 	}
 
 	@Test(priority = 3)
 	public void select() {
-		ListYourStayPage l = new ListYourStayPage(driver);
+		LoginPage l = new LoginPage(driver);
 		l.select();
 		l.clickB();
 	}
+	
+	
 	
 	
 }
