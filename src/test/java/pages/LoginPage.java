@@ -47,7 +47,7 @@ public class LoginPage {
 	public WebElement validEmail;
 	
 	@FindBy (xpath = "//div[@class='col-12']//input[@placeholder='Password']")
-	public WebElement validpassword;
+	public WebElement validPassword;
 	
 	@FindBy (xpath = "//a[@id='login_btn']")
 	public WebElement validLoginButton;
@@ -89,7 +89,7 @@ public class LoginPage {
 	public void loginButton() {
 		loginbutton.click();
 		validEmail.sendKeys(Config.getProperty("email"));
-		validpassword.sendKeys(Config.getProperty("password"));
+		validPassword.sendKeys(Config.getProperty("password"));
 		validLoginButton.click();
 	}
 	
