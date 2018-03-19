@@ -40,6 +40,11 @@ public class MainHomePage {
 	    return actualTitle;
 	}
 	
+	public String actualUrl() {
+		String result = driver.getCurrentUrl().trim();
+		return result;
+	}
+	
 	public void listButton() {
 		
 		ListYourButton.click();

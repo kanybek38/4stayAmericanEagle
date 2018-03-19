@@ -40,6 +40,21 @@ public class LoginPage {
 	@FindBy (linkText = "Email has already been taken")
 	public WebElement error;
 	
+	@FindBy (xpath = "(//a[@href='#login-modal'])[1]")
+	public WebElement loginbutton;
+	
+	@FindBy (xpath = "//div[@class='col-12']//input[@placeholder='Email address']")
+	public WebElement validEmail;
+	
+	@FindBy (xpath = "//div[@class='col-12']//input[@placeholder='Password']")
+	public WebElement validpassword;
+	
+	@FindBy (xpath = "//a[@id='login_btn']")
+	public WebElement validLoginButton;
+	
+	@FindBy (xpath ="//div[@id='login_status']")
+	public WebElement errorMessage;
+	
 	public String title() {
 		
 		String actualTitle = driver.getTitle().toString().trim();
@@ -71,8 +86,23 @@ public class LoginPage {
 		creatAccountButton.click();
 	}
 	
+	public void loginButton() {
+		loginbutton.click();
+		validEmail.sendKeys(Config.getProperty("email"));
+		validpassword.sendKeys(Config.getProperty("password"));
+		validLoginButton.click();
+	}
 	
+	public void loginButtonNegative() {
+		loginbutton.click();
+		validEmail.sendKeys(Config.getProperty("email"));
+		validLoginButton.click();
+	}
 	
+	public String errMessage() {
+		String result = errorMessage.getText().trim();
+		return result;
+	}
 	
 	
 

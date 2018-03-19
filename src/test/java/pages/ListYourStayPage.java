@@ -4,6 +4,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
@@ -13,7 +14,7 @@ import utilities.Config;
 //
 public class ListYourStayPage {
      WebDriver driver;
-     
+    
 	
 	public ListYourStayPage(WebDriver driver) {
 		this.driver=driver;
@@ -53,7 +54,7 @@ public class ListYourStayPage {
 	@FindBy(xpath="(//div[@class='col-12 form-group']//input)[3]")
 	public WebElement AddressLine2; 
 	
-	@FindBy(xpath="//div[@class='icon bath-private selected']")
+	@FindBy(xpath="(//div[@class='icon bath-private'])[2]")
 	public WebElement privateBathroom; 
 	
 	@FindBy(xpath="//label[@for='room_king_bed']")
@@ -65,39 +66,61 @@ public class ListYourStayPage {
 	@FindBy(xpath="//label[@for='room_balcony']")
 	public WebElement roomBalconyCheckBox; 
 	
-	@FindBy(xpath="//input[@class='form-control ng-pristine ng-valid ng-empty ng-touched']")
+	@FindBy(xpath="(//div[@class='col-12 form-group']//input)[4]")
 	public WebElement mainStayTitle; 
 	
 	
-	@FindBy(xpath="//textarea[@class='form-control ng-pristine ng-valid ng-empty ng-touched']")
+	@FindBy(xpath="//div[@class='col-12 form-group']//textarea")
 	public WebElement mainStayDescription; 
 	
 	
-	@FindBy(xpath="//div[@class='date-range-picker col-8 ng-pristine ng-untouched ng-valid ng-binding ng-isolate-scope ng-not-empty']")
+	@FindBy(xpath="(//div[@class='row form-group']//div)[1]")
 	public WebElement availableDateFrom; 
 	
 	@FindBy(xpath="//table[@class='table-condensed']//tbody[1]//tr[5]//td[.='29']")
 	public WebElement march29; 
 	
 	
-	@FindBy(xpath="//div[@class='date-range-picker col-8 ng-pristine ng-untouched ng-valid ng-binding ng-isolate-scope ng-empty']")
+	@FindBy(xpath="(//div[@class='row form-group']//div)[2]")
 	public WebElement availableDateTo;
 	
-	@FindBy(xpath="//table[@class='table-condensed']//tbody//tr[5]//td[.='31']")
+	@FindBy(xpath="(//table[@class='table-condensed']//tbody//tr[5]//td[.='31'])[2]")
 	public WebElement march31; 
 	
-	@FindBy(xpath="//input[@class='form-control ng-pristine ng-valid ng-empty ng-valid-min ng-valid-max ng-touched']")
+	@FindBy(xpath="//input[@max='100000']")
 	public WebElement pricePerMonth;
 	
 	
-	@FindBy(xpath="//input[@class='form-control ng-valid ng-valid-min ng-valid-max ng-not-empty ng-dirty ng-valid-parse ng-touched']")
+	@FindBy(xpath="//input[@max='500']")
 	public WebElement securityDeposit;
 	
 	@FindBy(xpath="	//button[@class='btn btn-primary ng-binding']")
 	public WebElement saveButton;
 	
+
+	@FindBy(xpath="//button[@class='btn btn-outline-primary']")
+	public WebElement seeWhatYouMissedButton;
+	
+	@FindBy(xpath="//div[@class='alert alert-danger']//li[.='Define price for your stay']")
+	public WebElement errorSign1; 
+	
+	@FindBy(xpath="//div[@class='alert alert-danger']//li[.='Define deposit amount for your stay']")
+	public WebElement errorSign2;
+	
+	@FindBy(xpath="//div[@class='card-header']//label[.='Property details']")
+	public WebElement propertyDetails;
+	
+	@FindBy(xpath="//a[@class='dropdown-toggle']")
+	public WebElement dropDownButton;
+	
+	@FindBy(xpath="//ul[@class='dropdown-menu animated fadeInRight']//li[3]")
+	public WebElement LogOutButton;
 	
 	
+	public String actualTitle() {
+		String result = driver.getTitle().trim();
+		return result;
+	}
 	
 	
 public static void sendKeyAddressLine(WebElement element, String str) {
@@ -142,19 +165,29 @@ public void listYourStay() throws InterruptedException {
 	
 	
 
-	AddressLine1.sendKeys("123"+Keys.ARROW_DOWN+Keys.ENTER);
+	AddressLine1.sendKeys(Config.getProperty("addressLine1"));
+	Thread.sleep(500);
+
+	AddressLine1.sendKeys(Keys.ARROW_DOWN);	
+	Thread.sleep(500);
+
+	AddressLine1.sendKeys(Keys.ENTER	);	
+
 	
-	
-	
-	
-	
-	
-	Thread.sleep(2000);
+	Thread.sleep(500);
 		//AddressLine2.click();
 
 
 
-	AddressLine2.sendKeys(Config.getProperty("addressLine1")+Keys.ARROW_DOWN+Keys.ENTER);
+	AddressLine2.sendKeys(Config.getProperty("addressLine1"));
+	Thread.sleep(500);
+
+	AddressLine2.sendKeys(Keys.ARROW_DOWN);
+	Thread.sleep(500);
+
+	AddressLine2.sendKeys(Keys.ENTER	);	
+
+	
 	Thread.sleep(500);
 
 	nextButton.click();
@@ -185,16 +218,16 @@ public void listYourStay() throws InterruptedException {
 	Thread.sleep(500);
 
 	availableDateFrom.click();
-	Thread.sleep(500);
+	Thread.sleep(1000);
 
 	march29.click();
-	Thread.sleep(500);
+	Thread.sleep(1000);
 
 	availableDateTo.click();
-	Thread.sleep(500);
+	Thread.sleep(1000);
 
 	march31.click();
-	Thread.sleep(500);
+	Thread.sleep(1000);
 
 	nextButton.click();
 	Thread.sleep(500);
@@ -209,6 +242,80 @@ public void listYourStay() throws InterruptedException {
 	
 }
 
+public void listYourStayNegative() throws InterruptedException {
 	
+	Thread.sleep(500);
+	dashboardButton.click();
+	Thread.sleep(500);
+	listYourStayButton.click();
+	Thread.sleep(500);
+	privateRoom.click();
+	Thread.sleep(500);
+	nextButton.click();
+
+	Thread.sleep(500);
+	nextButton.click();
+	Thread.sleep(500);
+
+	nextButton.click();		
 	
+
+	Thread.sleep(500);
+	nextButton.click();
+	Thread.sleep(500);
+
+
+
+	nextButton.click();
+	Thread.sleep(500);
+
+
+	nextButton.click();
+	Thread.sleep(500);
+
+
+	nextButton.click();
+	Thread.sleep(500);
+
+
+	seeWhatYouMissedButton.click();
+	
+}
+
+public String errorSign(WebElement element) {
+	
+	String result = element.getText().trim();
+	
+	return result; 
+}
+
+	public void smokeListYourStayButton() {
+		listYourStayButton.click();
+	}
+
+	public void smokePrivateButton() {
+		privateRoom.click();
+	}
+
+	public void smokeNextButton() {
+		nextButton.click();
+	}
+	
+	public String smokeProperty() {
+		String result = propertyDetails.getText().trim();
+		return result;
+	}
+	
+	public void dropDownButton() throws InterruptedException {
+		Actions action = new Actions(driver);
+		action.moveToElement(dropDownButton).click(dropDownButton).perform();
+		Thread.sleep(200);
+		
+
+		dropDownButton.isDisplayed();
+	}
+	
+	public void logOutButton() {
+		LogOutButton.click();
+	}
 }
