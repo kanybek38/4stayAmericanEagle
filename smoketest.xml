@@ -1,0 +1,13 @@
+x<suite name="4 Stay American Eagle">
+
+<test name="Application Test">
+
+<classes>
+
+<class name="com.test.Smoke"></class>
+
+</classes>
+
+</test>
+
+</suite>
