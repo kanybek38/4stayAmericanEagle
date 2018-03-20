@@ -78,8 +78,6 @@ public class Smoke {
 	   //---
 	   js.executeScript("arguments[0].setAttribute('style','background: lightgreen; border: 2px solid red;');", l1.LogOutButton);
 	   l1.logOutButton();
-			  
-	   
 			   
 	 }
 }
