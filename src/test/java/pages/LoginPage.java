@@ -55,6 +55,21 @@ public class LoginPage {
 	@FindBy (xpath ="//div[@id='login_status']")
 	public WebElement errorMessage;
 	
+	@FindBy(id="user_email")
+	public WebElement loginEmail; 
+	
+	@FindBy(id="user_password")
+	public WebElement loginPassword; 
+	
+	@FindBy(id="login_btn")
+	public WebElement negativeLoginButton;
+	
+	@FindBy(id="login_status")
+	public WebElement loginStatus; 
+	
+	@FindBy(xpath="//a[@data-toggle='modal']")
+	public WebElement NegativePasswordLoginButton;
+	
 	public String title() {
 		
 		String actualTitle = driver.getTitle().toString().trim();
@@ -102,6 +117,20 @@ public class LoginPage {
 	public String errMessage() {
 		String result = errorMessage.getText().trim();
 		return result;
+	}
+	
+	public void negativePasswordLogin() {
+		
+		NegativePasswordLoginButton.click();
+		
+		loginEmail.sendKeys(Config.getProperty("email"));
+		
+		loginPassword.sendKeys(Config.getProperty("wrongPassword"));
+		
+		negativeLoginButton.click();
+		
+		
+		
 	}
 	
 	
