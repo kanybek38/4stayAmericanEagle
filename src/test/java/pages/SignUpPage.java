@@ -30,6 +30,9 @@ public class SignUpPage {
 		@FindBy(id="first-name")
 		public WebElement signUpFirstName;
 		
+		@FindBy(xpath="//input[@id='last-name']")
+		public WebElement signUpLastName;
+		
 		@FindBy(id="email")
 		public WebElement signUpEmail; 
 		
@@ -41,6 +44,30 @@ public class SignUpPage {
 		
 		@FindBy(xpath="//label[@for='last-name']")
 		public WebElement alertLastName; 
+		
+		@FindBy(xpath="//h5[@class='text-center mb-4']")
+		public WebElement TextIWanttoBecome;
+		
+		@FindBy(xpath="//a[@ng-click='vm.next()']")
+		public WebElement signUpNextButton;
+		
+		@FindBy(xpath="//textarea[@ng-model='vm.user.about_me']")
+		public WebElement tellUsAboutYourself;
+		
+		@FindBy(xpath="//input[@ng-model='vm.user.dob_year']")
+		public WebElement yearOfBirth;
+		
+		@FindBy(xpath="//button[@ng-bind-html='vm.buttonLabel']")
+		public WebElement signUpSaveButton;
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		public void signUp() {
@@ -58,9 +85,55 @@ public class SignUpPage {
 		
 		public String getStatusAlert() {
 			
-			String result=signUpFirstName.getAttribute("class").trim(); 
+			String result=alertLastName.getAttribute("class").trim(); 
 			return result;
 
+		}
+		
+		public void signUpRegNumericName()  {
+			signUp.click();
+
+			moreOptions.click();	
+
+			continueWithEmail.click();
+
+			
+			signUpFirstName.sendKeys(Config.getProperty("signUpNumericFirstName"));
+
+			signUpLastName.sendKeys(Config.getProperty("signUpNumericFirstName"));
+			
+			signUpEmail.sendKeys(Config.getProperty("signUpEmail"));
+			signUpPassword.sendKeys(Config.getProperty("signUpPassword"));
+
+			signUpButton.click();
+			
+		}
+		
+		public void signUpRegPositive() {
+			
+			signUp.click();
+
+			moreOptions.click();	
+
+			continueWithEmail.click();
+
+			
+			signUpFirstName.sendKeys(Config.getProperty("signUpRegPositiveFirstName"));
+
+			signUpLastName.sendKeys(Config.getProperty("signUpRegPositiveLastName"));
+			
+			signUpEmail.sendKeys(Config.getProperty("signUpRegPositiveEmail"));
+			signUpPassword.sendKeys(Config.getProperty("signUpPassword"));
+
+			signUpButton.click();
+			
+			signUpNextButton.click();
+			
+			tellUsAboutYourself.sendKeys(Config.getProperty("tellUsAboutYourself"));
+			
+			yearOfBirth.sendKeys(Config.getProperty("yearOfBirth"));
+			
+			signUpSaveButton.click();
 		}
 		
 }
