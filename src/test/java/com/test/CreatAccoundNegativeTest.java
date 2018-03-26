@@ -28,6 +28,7 @@ public class CreatAccoundNegativeTest {
 	@Test(priority = 1)
 	public void mainPage() {
 		driver.get(Config.getProperty("url"));
+		
 		MainHomePage m = new MainHomePage(driver);
 		// this for title
 		String exceptedTitle = "Room rental, roommate finder, off-campus housing, homestay | 4stay";

@@ -132,6 +132,14 @@ public class LoginPage {
 		
 		
 	}
+	public void  negativeEmailLogin() {
+		NegativePasswordLoginButton.click();
+		loginEmail.sendKeys(Config.getProperty("wrongEmail"));
+		loginPassword.sendKeys(Config.getProperty("password"));
+		negativeLoginButton.click();
+		
+		
+	}
 	
 	
 
