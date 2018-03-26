@@ -48,7 +48,7 @@ public class LoginTest {
 		Assert.assertEquals(m.title().trim(), exceptedTitle);
 	}
 	
-//@Test ()
+   @Test ()
 	
 	public void negativePasswordLogin() throws InterruptedException {
 		
@@ -66,7 +66,7 @@ public class LoginTest {
 		
 		Assert.assertEquals(negativeLogin.loginStatus.getText(), neagitiveMessage);
 	}
-	@Test()
+	//@Test()
 	public void negativeEmailLogin() throws InterruptedException {
 		driver.get(Config.getProperty("url"));
 LoginPage negativeemail=new LoginPage(driver); 

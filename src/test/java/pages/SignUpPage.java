@@ -60,13 +60,38 @@ public class SignUpPage {
 		@FindBy(xpath="//button[@ng-bind-html='vm.buttonLabel']")
 		public WebElement signUpSaveButton;
 		
+		public String actualTitle() {
+			String result = driver.getTitle().trim();
+			return result;
+		}
 		
-		
-		
-		
-		
-		
-		
+        public void signUpKana1() {
+			
+			signUp.click();
+			moreOptions.click();
+			continueWithEmail.click();
+			
+			signUpFirstName.sendKeys(Config.getProperty("signUpFirstName"));
+			signUpLastName.sendKeys(Config.getProperty("signUpRegPositiveLastName"));
+			signUpEmail.sendKeys(Config.getProperty("signUpEmail"));
+			signUpPassword.sendKeys(Config.getProperty("signUpPassword"));
+			signUpButton.click();
+			
+		}
+        
+     public void signUpKana2() {
+			
+			signUp.click();
+			moreOptions.click();
+			continueWithEmail.click();
+			
+			signUpFirstName.sendKeys(Config.getProperty("signUpFirstName"));
+			signUpLastName.sendKeys(Config.getProperty("signUpRegPositiveLastName"));
+			signUpEmail.sendKeys(Config.getProperty("signUpEmail"));
+			signUpPassword.sendKeys(Config.getProperty("lessCharPassword"));
+			signUpButton.click();
+			
+		}
 		
 		
 		
