@@ -1,0 +1,30 @@
+package pages;
+//
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class SearchPage {
+WebDriver driver;
+
+
+	public SearchPage(WebDriver driver) {
+		this.driver=driver;
+		PageFactory.initElements(driver, this);
+		
+	}
+	
+		@FindBy(xpath="(//h2[@class='ng-binding'])[3]")
+		public WebElement choice;
+		//
+		
+		@FindBy(xpath="//div[@class='text-center m-b-100']/a")
+		public WebElement requestStayBtn;
+		
+		public void clickChoice() {
+			choice.click();
+		}
+		
+		
+}

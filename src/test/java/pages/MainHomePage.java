@@ -8,12 +8,12 @@ import org.openqa.selenium.support.PageFactory;
 import utilities.Config;
 
 public class MainHomePage {
-//
-	WebDriver driver;
+WebDriver driver;
 	
 	public MainHomePage(WebDriver driver) {
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
+	
 	}
 	
 	@FindBy (linkText="LIST YOUR STAY")
@@ -33,6 +33,22 @@ public class MainHomePage {
 	
 	@FindBy (xpath = "//li[@class='list']/a" )
 	public WebElement secondListYourStay;
+	
+	
+
+///// for test cases 12 and 13	
+	@FindBy(xpath="//div[@class='form-group']/input")
+	public WebElement searchBox;
+	 
+	@FindBy(xpath="//button[@class='btn search-btn']")
+	public WebElement searchBtn;
+	
+	
+	@FindBy(xpath="//a[@href='/dashboard/home']")
+	public WebElement dashBoardLink;
+	
+	@FindBy(xpath="//div[@class='user-name']/h1")
+	public WebElement userNameLink;
 	
 	public String title() {
 	
@@ -64,4 +80,11 @@ public class MainHomePage {
 		secondListYourStay.click();
 	}
 	
-}
+	public void searchCity() {
+		searchBox.sendKeys(Config.getProperty("city"));
+		searchBtn.click();
+	}
+	public void clickDashBoardLink() {
+		dashBoardLink.click();
+	}
+}////
